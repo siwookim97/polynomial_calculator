@@ -1,20 +1,21 @@
 package com.ll;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calc {
 
     public static int run(String exp) {
-        String[] nums = exp.split(" ");
+        exp = exp.replaceAll("- ", "+ -");
 
-        if (nums[1].equals("+")) {
-            int a = Integer.parseInt(nums[0]);
-            int b = Integer.parseInt(nums[2]);
+        String[] bits = exp.split(" \\+ ");
 
-            return a + b;
-        } else {
-            int a = Integer.parseInt(nums[0]);
-            int b = Integer.parseInt(nums[2]);
+        int sum = 0;
 
-            return a - b;
+        for (int i = 0; i < bits.length; i++) {
+            sum += Integer.parseInt(bits[i]);
         }
+
+        return sum;
     }
 }
